@@ -1,6 +1,5 @@
 require_relative './item.rb'
 
-
 class Genre < Item
     attr_accessor :name
     attr_reader :items
@@ -13,7 +12,6 @@ class Genre < Item
     def add_item(item)
         @items << item
         item.genre = self
-
     end
 
 end
