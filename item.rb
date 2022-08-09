@@ -1,6 +1,5 @@
 class Item
   attr_accessor :genre, :author, :label, :publish_date, :id, :archived
-  attr_reader :label
 
   def initialize(genre, author, label, publish_date)
     @id = rand(1..100)
@@ -25,7 +24,6 @@ class Item
   def can_be_archived?
     return true if publish_date > 10
   end
-
 end
 
 # item = Item.new('genre', 'author', 'label', 10)
