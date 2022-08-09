@@ -11,11 +11,9 @@ class Genre < Item
     end
     
     def add_item(item)
-        @items << self
-    end
+        @items << item
+        item.genre = self
 
-    def display_item
-        puts @item
     end
 
 end
