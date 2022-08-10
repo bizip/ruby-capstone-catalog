@@ -11,12 +11,7 @@ class MusicAlbum < Item
   end
 
   def can_be_archived?
-    return true if @archived || @on_spotify == true
+    return true if @archived && @on_spotify == true
     return false unless @archived
   end
 end
-
-musicAlbum = MusicAlbum.new('name album', false)
-puts musicAlbum.name
-
-

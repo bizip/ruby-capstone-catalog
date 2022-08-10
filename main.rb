@@ -2,15 +2,30 @@ require_relative 'item'
 require_relative 'music_album'
 
 class App
-
   attr_reader :music_album
+
   def initialize
     @music_album = []
   end
 
-  def add_music_album()
-    
+  def add_music_album
+    puts 'What is the name of your album'
+    name = gets.chomp
+    on_spoify = false
+    puts 'Is your album on spottify [Y/N]'
+    is_on_spoify = gets.chomp
+    on_spoify == true if is_on_spoify.to_s == 'Y'
+    @music_album << MusicAlbum.new(name, on_spoify)
+    puts 'Album created!'
+    list_all_music_albums
   end
+
+  def list_all_music_albums
+    @music_album.each do |album|
+      puts "Album name: #{album.name}, On_spotify: #{album.on_spotify}"
+    end
+  end
+
   def run
     puts 'Welcome to catalog app'
     menu
