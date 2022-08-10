@@ -1,11 +1,12 @@
 require_relative 'item'
 require_relative 'music_album'
+require_relative 'data'
 
 class App
   attr_reader :music_album
 
   def initialize
-    @music_album = []
+    @music_album = Data.load_music_albums
   end
 
   def add_music_album
@@ -15,9 +16,12 @@ class App
     puts 'Is your album on spottify [Y/N]'
     is_on_spoify = gets.chomp
     on_spoify == true if is_on_spoify.to_s == 'Y'
+    on_spoify == false if is_on_spoify.to_s != 'Y'
+
     @music_album << MusicAlbum.new(name, on_spoify)
     puts 'Album created!'
-    list_all_music_albums
+    data = Data.new
+    data.collect_books(@music_album)
   end
 
   def list_all_music_albums
@@ -93,6 +97,8 @@ end
 
 def main
   app = App.new
+  data = Data.new
+  data.create_files
   app.run
 end
 main

@@ -14,4 +14,13 @@ class MusicAlbum < Item
     return true if @archived && @on_spotify == true
     return false unless @archived
   end
+
+  def to_json(*_args)
+    JSON.generate(
+      {
+        name: @name,
+        on_spoify: @on_spoify
+      }
+    )
+  end
 end
