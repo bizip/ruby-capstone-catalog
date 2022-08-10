@@ -10,8 +10,8 @@ describe Game do
     end
   end
   describe '#can_be_archived' do
-    it 'It should reurn true if archived is  equals true and last_played_at > 2' do
-      expect(@game.can_be_archived?).to eql true
+    it 'It should reurn false if archived is not equals true and last_played_at > 2' do
+      expect(@game.can_be_archived?).to eql false
     end
   end
 end
