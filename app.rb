@@ -1,14 +1,20 @@
 require './modules/book_module'
+require './modules/game_module'
 require_relative './book'
 require_relative './label'
+require_relative './game'
+require_relative './author'
 require 'json'
 
 class App
+  include CreateGames
   include HandleBooks
 
   def initialize
     @books = []
     @labels = []
+    @games = []
+    @authors = []
     load_data
   end
 
@@ -62,6 +68,7 @@ class App
       list_all_music_albums
     when '3'
       list_all_games
+      menu
     when '4'
       list_all_genres
     when '5'
@@ -69,6 +76,7 @@ class App
       menu
     when '6'
       list_all_authors
+      menu
     when '7'
       add_book
       menu
@@ -76,6 +84,7 @@ class App
       add_music_album
     when '9'
       add_game
+      menu
     when '10'
       save_data
       puts 'Thank you for using this app!'
@@ -98,17 +107,28 @@ class App
     end
   end
 
-  def save_data
+  def save_data # rubocop:todo Metrics/MethodLength
     books = []
     labels = []
+    games = []
+    authors = []
     @books.each do |book|
       books.push({ title: book.title, author: book.author, cover_state: book.cover_state, publisher: book.publisher })
     end
     @labels.each do |label|
       labels.push({ title: label.title, color: label.color })
     end
+    @games.each do |game|
+      games.push({ name_of_game: game.name_of_game, multiplayer: game.multiplayer, last_played_at: game.last_played_at,
+                   first_name: game.first_name, last_name: game.last_name })
+    end
+    @authors.each do |author|
+      authors.push({ first_name: author.first_name, last_name: author.last_name })
+    end
 
     File.write('books.json', JSON.generate(books))
     File.write('labels.json', JSON.generate(labels))
+    File.write('games.json', JSON.generate(games))
+    File.write('authors.json', JSON.generate(authors))
   end
 end
