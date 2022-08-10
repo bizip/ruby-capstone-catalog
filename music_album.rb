@@ -19,7 +19,7 @@ class MusicAlbum < Item
     JSON.generate(
       {
         name: @name,
-        on_spoify: @on_spoify
+        on_spoify: @on_spotify
       }
     )
   end
