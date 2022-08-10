@@ -14,7 +14,7 @@ describe Genre do
 
   describe '#add_item' do
     it 'It should add new item' do
-     expect(@genre.add_item(@item)).should eql? @item
+      expect(@genre.add_item(@item)).should eql? @item
     end
   end
 end

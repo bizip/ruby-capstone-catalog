@@ -13,7 +13,7 @@ describe MusicAlbum do
 
   describe '#can_be_archived' do
     it 'It should reurn true if archived or on_spoify is equals true ' do
-     expect(@music_album.can_be_archived?).to eql true
+      expect(@music_album.can_be_archived?).to eql true
     end
   end
 end
