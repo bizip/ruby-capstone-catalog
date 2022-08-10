@@ -2,7 +2,7 @@ require_relative '../game'
 
 describe Game do
   before :each do
-    @game = Game.new('Ishi', 3)
+    @game = Game.new('mortal combat', 3)
   end
   describe '#new' do
     it 'Creates a new game' do
