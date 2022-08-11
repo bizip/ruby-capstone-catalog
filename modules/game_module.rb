@@ -28,6 +28,20 @@ module CreateGames
       @games.push(game)
       @authors.push(author)
       puts 'Game created successfully'
+    when 'Y' # rubocop:todo Lint/DuplicateBranch
+      multiplayer = 'Yes'
+      game = Game.new(name_of_game, multiplayer, last_played_at, first_name, last_name)
+      author = Author.new(first_name, last_name)
+      @games.push(game)
+      @authors.push(author)
+      puts 'Game created successfully'
+    when 'N' # rubocop:todo Lint/DuplicateBranch
+      multiplayer = 'No'
+      game = Game.new(name_of_game, multiplayer, last_played_at, first_name, last_name)
+      author = Author.new(first_name, last_name)
+      @games.push(game)
+      @authors.push(author)
+      puts 'Game created successfully'
     else
       puts 'Please enter corresponding value for multiplayer'
     end

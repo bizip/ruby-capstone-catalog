@@ -18,7 +18,7 @@ class Genre
   def to_json(*_args)
     JSON.generate(
       {
-        name: @name,
+        name: @name
       }
     )
   end

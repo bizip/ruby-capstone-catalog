@@ -44,7 +44,7 @@ class Data
     return data unless File.exist?(file) && File.read(file) != ''
 
     JSON.parse(File.read(file)).each do |genre|
-      data << MusicAlbum.new(genre.name['name'])
+      data << MusicAlbum.new(genre['name'], genre['on_spotify'])
     end
     data
   end
