@@ -1,24 +1,32 @@
 require './modules/book_module'
 require './modules/game_module'
+require './modules/music_album_module'
+
 require_relative './book'
 require_relative './label'
 require_relative './game'
 require_relative './author'
+require_relative './music_album'
 require 'json'
 
 class App
   include CreateGames
   include HandleBooks
+  include CreateMusicAlbum
 
   def initialize
     @books = []
     @labels = []
     @games = []
     @authors = []
+    @music_albums = []
+    @genres = []
     load_data
   end
 
-  def load_data
+  # rubocop:todo Metrics/PerceivedComplexity
+  # rubocop:todo Metrics/MethodLength
+  def load_data # rubocop:todo Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
     if File.empty?('books.json')
       puts 'List is empty'
     else
@@ -35,7 +43,26 @@ class App
         @labels.push(Label.new(label['title'], label['color']))
       end
     end
+
+    if File.empty?('add_music_album.json')
+      puts 'List is empty'
+    else
+      music_albums = JSON.parse(File.read('add_music_album.json'))
+      music_albums.each do |album|
+        @music_albums.push(MusicAlbum.new(album['name'], album['on_spotify']))
+      end
+    end
+    if File.empty?('add_genre.json')
+      puts 'List is empty'
+    else
+      genres = JSON.parse(File.read('add_genre.json'))
+      genres.each do |genre|
+        @genres.push(Genre.new(genre['gnr']))
+      end
+    end
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/PerceivedComplexity
 
   def run
     puts 'Welcome to catalog app'
@@ -66,11 +93,13 @@ class App
       menu
     when '2'
       list_all_music_albums
+      menu
     when '3'
       list_all_games
       menu
     when '4'
       list_all_genres
+      menu
     when '5'
       list_all_labels
       menu
@@ -82,6 +111,7 @@ class App
       menu
     when '8'
       add_music_album
+      menu
     when '9'
       add_game
       menu
@@ -112,6 +142,9 @@ class App
     labels = []
     games = []
     authors = []
+    music_albums = []
+    genres = []
+
     @books.each do |book|
       books.push({ title: book.title, author: book.author, cover_state: book.cover_state, publisher: book.publisher })
     end
@@ -126,6 +159,15 @@ class App
       authors.push({ first_name: author.first_name, last_name: author.last_name })
     end
 
+    @music_albums.each do |album|
+      music_albums.push({ name: album.name, on_spotify: album.on_spotify })
+    end
+    @genres.each do |gnr1|
+      genres.push({ gnr: gnr1.name })
+    end
+
+    File.write('add_music_album.json', JSON.generate(music_albums))
+    File.write('add_genre.json', JSON.generate(genres))
     File.write('books.json', JSON.generate(books))
     File.write('labels.json', JSON.generate(labels))
     File.write('games.json', JSON.generate(games))
