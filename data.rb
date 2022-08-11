@@ -20,9 +20,9 @@ class Data
   end
 
   def collect_genre(genre)
-    return unless File.exist?('genre.json')
+    return unless File.exist?('add_genre.json')
 
-    genre_collection = File.open('genre.json', 'w')
+    genre_collection = File.open('add_genre.json', 'w')
     genre_collection.write(JSON.generate(genre))
     genre_collection.close
   end

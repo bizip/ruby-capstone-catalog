@@ -1,25 +1,31 @@
 require_relative 'item'
 require_relative 'music_album'
 require_relative 'data'
+require_relative 'genre'
 
 class App
-  attr_reader :music_album
+  attr_reader :music_album, :genre
 
   def initialize
     @music_album = Data.load_music_albums
+    @genre = Data.load_genre
   end
 
   def add_music_album
     puts 'What is the name of your album'
     name = gets.chomp
-    on_spoify = false
+    puts "What is the genre of you album"
+    gnr = gets.chomp
     puts 'Is your album on spottify [Y/N]'
-    is_on_spoify = gets.chomp
-    on_spoify == true if is_on_spoify == 'Y'
-    @music_album << MusicAlbum.new(name, on_spoify = false)
+    on_spotify = false
+    is_on_spotify = gets.chomp
+    on_spotify = true if is_on_spotify == 'Y'
+    @music_album << MusicAlbum.new(name, on_spotify)
+    @genre << Genre.new(gnr)
     puts 'Album created!'
     data = Data.new
     data.collect_albums(@music_album)
+    data.collect_genre(@genre)
     menu
   end
 
