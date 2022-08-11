@@ -18,13 +18,16 @@ class App
     load_data
   end
 
-  def load_data
+  # rubocop:todo Metrics/PerceivedComplexity
+  # rubocop:todo Metrics/MethodLength
+  def load_data # rubocop:todo Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
     if File.empty?('books.json')
       puts 'List is empty'
     else
       books = JSON.parse(File.read('books.json'))
       books.each do |book|
-        @books.push(Book.new(book['publisher'], book['cover_state'], book['title'], book['author']))
+        @books.push(Book.new(book['publisher'], book['cover_state'], book['title'],
+                             book['author']))
       end
     end
     if File.empty?('labels.json')
@@ -40,7 +43,8 @@ class App
     else
       games = JSON.parse(File.read('games.json'))
       games.each do |game|
-        @games.push(Game.new(game['name_of_game'], game['multiplayer'], game['last_played_at'], game['first_name'], game['last_name']))
+        @games.push(Game.new(game['name_of_game'], game['multiplayer'], game['last_played_at'], game['first_name'],
+                             game['last_name']))
       end
     end
     if File.empty?('authors.json')
@@ -52,6 +56,8 @@ class App
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/PerceivedComplexity
 
   def run
     puts 'Welcome to catalog app'
