@@ -43,6 +43,7 @@ class App
         @labels.push(Label.new(label['title'], label['color']))
       end
     end
+<<<<<<< HEAD
     if File.empty?('add_music_album.json')
       puts 'List is empty'
     else
@@ -77,6 +78,26 @@ class App
     end
   end
   end
+=======
+    if File.empty?('games.json')
+      puts 'List is empty'
+    else
+      games = JSON.parse(File.read('games.json'))
+      games.each do |game|
+        @games.push(Game.new(game['name_of_game'], game['multiplayer'], game['last_played_at'], game['first_name'],
+                             game['last_name']))
+      end
+    end
+    if File.empty?('authors.json')
+      puts 'List is empty'
+    else
+      authors = JSON.parse(File.read('authors.json'))
+      authors.each do |author|
+        @authors.push(Author.new(author['first_name'], author['last_name']))
+      end
+    end
+  end
+>>>>>>> 39add5387d14e042e5d061d41a99b1fd27287444
   # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/PerceivedComplexity
 
