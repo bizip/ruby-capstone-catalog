@@ -32,8 +32,7 @@ class App
     else
       books = JSON.parse(File.read('books.json'))
       books.each do |book|
-        @books.push(Book.new(book['publisher'], book['cover_state'], book['title'],
-                             book['author']))
+        @books.push(Book.new(book['publisher'], book['cover_state'], book['title'], book['author']))
       end
     end
     if File.empty?('labels.json')
