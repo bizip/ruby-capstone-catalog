@@ -2,7 +2,7 @@ require_relative 'spec_helper'
 
 describe MusicAlbum do
   before :each do
-    @music_album = MusicAlbum.new(true)
+    @music_album = MusicAlbum.new("Romeo & juliete", true)
   end
 
   describe '#new' do
@@ -16,4 +16,10 @@ describe MusicAlbum do
       expect(@music_album.can_be_archived?).to eql true
     end
   end
+
+  describe '#name' do
+  it 'Name should be Romeo & juliete' do
+    expect(@music_album.name).to eql 'Romeo & juliete'
+  end
+end
 end

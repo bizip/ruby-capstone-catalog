@@ -1,10 +1,11 @@
 require_relative 'item'
 
 class MusicAlbum < Item
-  attr_accessor : on_spotify
+  attr_accessor :name, :on_spotify
 
-  def initialize(on_spotify)
+  def initialize(name, on_spotify)
     super(genre, author, label, publish_date)
+    @name = name
     @on_spotify = on_spotify
     @archived = archived
   end
@@ -15,6 +16,7 @@ class MusicAlbum < Item
   end
 end
 
-new = MusicAlbum.new(true)
+musicAlbum = MusicAlbum.new('name album', false)
+puts musicAlbum.name
 
-puts new
+

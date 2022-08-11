@@ -1,6 +1,16 @@
 require_relative 'item'
+require_relative 'music_album'
 
 class App
+
+  attr_reader :music_album
+  def initialize
+    @music_album = []
+  end
+
+  def add_music_album()
+    
+  end
   def run
     puts 'Welcome to catalog app'
     menu
