@@ -17,8 +17,3 @@ class Game < Item
     @archived && @last_played_at > 2
   end
 end
-
-
-
-# game = Game.new('Ishi', 2)
-
