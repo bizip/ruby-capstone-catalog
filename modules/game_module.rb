@@ -14,14 +14,14 @@ module CreateGames
     puts 'Lastname of author:'
     last_name = gets.chomp.to_s
     case multiplayer
-    when 'y'
+    when 'y', 'Y'
       multiplayer = 'Yes'
       game = Game.new(name_of_game, multiplayer, last_played_at, first_name, last_name)
       author = Author.new(first_name, last_name)
       @games.push(game)
       @authors.push(author)
       puts 'Game created successfully'
-    when 'n'
+    when 'n', 'N'
       multiplayer = 'No'
       game = Game.new(name_of_game, multiplayer, last_played_at, first_name, last_name)
       author = Author.new(first_name, last_name)
