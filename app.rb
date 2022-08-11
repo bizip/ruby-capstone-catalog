@@ -9,7 +9,7 @@ require_relative './author'
 require_relative './music_album'
 require 'json'
 
-class App
+class App # rubocop:todo Metrics/ClassLength
   include CreateGames
   include HandleBooks
   include CreateMusicAlbum
@@ -26,7 +26,8 @@ class App
 
   # rubocop:todo Metrics/PerceivedComplexity
   # rubocop:todo Metrics/MethodLength
-  def load_data # rubocop:todo Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
+  # rubocop:todo Metrics/AbcSize
+  def load_data # rubocop:todo Metrics/CyclomaticComplexity, Metrics/AbcSize
     if File.empty?('books.json')
       puts 'List is empty'
     else
@@ -43,7 +44,6 @@ class App
         @labels.push(Label.new(label['title'], label['color']))
       end
     end
-<<<<<<< HEAD
     if File.empty?('add_music_album.json')
       puts 'List is empty'
     else
@@ -58,27 +58,8 @@ class App
       genres = JSON.parse(File.read('add_genre.json'))
       genres.each do |genre|
         @genres.push(Genre.new(genre['gnr']))
+      end
     end
-  end
-  if File.empty?('games.json')
-    puts 'List is empty'
-  else
-    games = JSON.parse(File.read('games.json'))
-    games.each do |game|
-      @games.push(Game.new(game['name_of_game'], game['multiplayer'], game['last_played_at'], game['first_name'],
-                           game['last_name']))
-    end
-  end
-  if File.empty?('authors.json')
-    puts 'List is empty'
-  else
-    authors = JSON.parse(File.read('authors.json'))
-    authors.each do |author|
-      @authors.push(Author.new(author['first_name'], author['last_name']))
-    end
-  end
-  end
-=======
     if File.empty?('games.json')
       puts 'List is empty'
     else
@@ -97,7 +78,7 @@ class App
       end
     end
   end
->>>>>>> 39add5387d14e042e5d061d41a99b1fd27287444
+  # rubocop:enable Metrics/AbcSize
   # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/PerceivedComplexity
 
