@@ -24,7 +24,9 @@ class App
     load_data
   end
 
-  def load_data
+  # rubocop:todo Metrics/PerceivedComplexity
+  # rubocop:todo Metrics/MethodLength
+  def load_data # rubocop:todo Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
     if File.empty?('books.json')
       puts 'List is empty'
     else
@@ -46,8 +48,8 @@ class App
       puts 'List is empty'
     else
       music_albums = JSON.parse(File.read('add_music_album.json'))
-     music_albums.each do |album|
-      @music_albums.push(MusicAlbum.new(album['name'], album['on_spotify']))
+      music_albums.each do |album|
+        @music_albums.push(MusicAlbum.new(album['name'], album['on_spotify']))
       end
     end
     if File.empty?('add_genre.json')
@@ -59,6 +61,8 @@ class App
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/PerceivedComplexity
 
   def run
     puts 'Welcome to catalog app'

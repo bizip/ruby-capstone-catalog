@@ -13,12 +13,11 @@ module CreateMusicAlbum
     on_spotify = true if is_on_spotify == 'Y'
     music = MusicAlbum.new(name, on_spotify)
     genre = Genre.new(gnr)
-    
+
     @music_albums.push(music)
     @genres.push(genre)
     puts 'Album created!'
   end
-
 
   def list_all_music_albums
     if @music_albums.empty?
@@ -39,5 +38,4 @@ module CreateMusicAlbum
       end
     end
   end
-
 end
