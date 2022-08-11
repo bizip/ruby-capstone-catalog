@@ -19,5 +19,6 @@ class Game < Item
 end
 
 
+
 # game = Game.new('Ishi', 2)
-# puts game.can_be_archived?
+
