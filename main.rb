@@ -15,19 +15,25 @@ class App
     on_spoify = false
     puts 'Is your album on spottify [Y/N]'
     is_on_spoify = gets.chomp
-    on_spoify == true if is_on_spoify.to_s == 'Y'
-    on_spoify == false if is_on_spoify.to_s != 'Y'
-
-    @music_album << MusicAlbum.new(name, on_spoify)
+    on_spoify == true if is_on_spoify == 'Y'
+    @music_album << MusicAlbum.new(name, on_spoify = false)
     puts 'Album created!'
     data = Data.new
-    data.collect_books(@music_album)
+    data.collect_albums(@music_album)
+    menu
+  end
+
+  def add_genre
+  puts "what is the name of this genre"
+  
+  menu
   end
 
   def list_all_music_albums
     @music_album.each do |album|
       puts "Album name: #{album.name}, On_spotify: #{album.on_spotify}"
     end
+    menu
   end
 
   def run
