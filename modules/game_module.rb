@@ -2,10 +2,10 @@ require_relative '../game'
 require_relative '../author'
 
 module CreateGames
-  def add_game
+  def add_game # rubocop:todo Metrics/MethodLength
     puts 'Name of Game:'
     name_of_game = gets.chomp.to_s
-    puts 'Is it multiplayer yes [y] or [n]: '
+    puts 'Is it multiplayer [y] or [n]: '
     multiplayer = gets.chomp.to_s
     puts 'How many years last time played:'
     last_played_at = gets.chomp.to_s
@@ -13,11 +13,24 @@ module CreateGames
     first_name = gets.chomp.to_s
     puts 'Lastname of author:'
     last_name = gets.chomp.to_s
-    game = Game.new(name_of_game, multiplayer, last_played_at, first_name, last_name)
-    author = Author.new(first_name, last_name)
-    @games.push(game)
-    @authors.push(author)
-    puts 'Game added successfully'
+    case multiplayer
+    when 'y'
+      multiplayer = 'Yes'
+      game = Game.new(name_of_game, multiplayer, last_played_at, first_name, last_name)
+      author = Author.new(first_name, last_name)
+      @games.push(game)
+      @authors.push(author)
+      puts 'Game created successfully'
+    when 'n'
+      multiplayer = 'No'
+      game = Game.new(name_of_game, multiplayer, last_played_at, first_name, last_name)
+      author = Author.new(first_name, last_name)
+      @games.push(game)
+      @authors.push(author)
+      puts 'Game created successfully'
+    else
+      puts 'Please enter corresponding value for multiplayer'
+    end
   end
 
   def list_all_games
