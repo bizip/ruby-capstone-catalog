@@ -2,10 +2,17 @@ require_relative '../game'
 
 describe Game do
   before :each do
+<<<<<<< HEAD
     @game = Game.new('mortal', 'y', 3, 'gh', 'ish')
   end
   describe '#new' do
     it 'Creates a new game' do
+=======
+    @game = Game.new('Ishi', 3)
+  end
+  describe '#new' do
+    it 'Creates a new music album instance' do
+>>>>>>> 5adb449 (updates)
       @game.should be_an_instance_of Game
     end
   end
