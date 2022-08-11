@@ -17,6 +17,3 @@ class Game < Item
     @archived && @last_played_at > 2
   end
 end
-
-# game = Game.new('mortal combat', 'y', 3, 'Ghila', 'Ishi')
-# puts game.can_be_archived?
