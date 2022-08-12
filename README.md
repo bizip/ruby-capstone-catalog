@@ -8,6 +8,10 @@
 
 -Ruby
 
+## Link to the video demonstrations
+
+[Demo video](https://universityofrwanda-my.sharepoint.com/:v:/g/personal/bizimungu_217056474_stud_ur_ac_rw/Eb55usgEmwtKt-1zAuMyedcBHQw710_-Q6DVn7TslNeNAw?e=vgcoJf)
+
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
