@@ -1,4 +1,4 @@
-require_relative '../game' # rubocop:todo Layout/EndOfLine
+require_relative '../game'
 
 describe Game do
   before :each do

@@ -1,4 +1,4 @@
-require './modules/book_module' # rubocop:todo Layout/EndOfLine
+require './modules/book_module'
 require './modules/game_module'
 require './modules/music_album_module'
 

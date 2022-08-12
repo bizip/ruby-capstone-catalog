@@ -1,4 +1,4 @@
-require_relative '../music_album' # rubocop:todo Layout/EndOfLine
+require_relative '../music_album'
 require_relative '../genre'
 
 module CreateMusicAlbum
