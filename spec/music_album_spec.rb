@@ -1,4 +1,4 @@
-require_relative 'spec_helper'
+require_relative 'spec_helper' # rubocop:todo Layout/EndOfLine
 
 describe MusicAlbum do
   before :each do

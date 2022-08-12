@@ -1,4 +1,4 @@
-require_relative 'item'
+require_relative 'item' # rubocop:todo Layout/EndOfLine
 
 class MusicAlbum < Item
   attr_accessor :name, :on_spotify

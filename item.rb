@@ -30,6 +30,3 @@ class Item
     return true if publish_date > 10
   end
 end
-
-# item = Item.new('genre', 'author', 'label', 10)
-# puts item.move_to_archive

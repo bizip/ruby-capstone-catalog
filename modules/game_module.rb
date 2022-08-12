@@ -1,4 +1,4 @@
-require_relative '../game'
+require_relative '../game' # rubocop:todo Layout/EndOfLine
 require_relative '../author'
 
 module CreateGames
